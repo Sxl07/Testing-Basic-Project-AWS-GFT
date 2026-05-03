@@ -6,7 +6,6 @@ Este repositorio contiene la documentación y evidencia técnica del laboratorio
 El siguiente diagrama (exportado de Draw.io) representa la infraestructura desplegada, donde un "Actor" envía archivos a una instancia EC2 que gestiona múltiples volúmenes de datos y se conecta a un motor de base de datos.
 
 ![Diagrama de Arquitectura](images/Desafio.drawio.png) 
-*(Nota: Asegúrate de exportar tu archivo .drawio como imagen PNG/JPG en la carpeta images)*
 
 ---
 
@@ -14,19 +13,19 @@ El siguiente diagrama (exportado de Draw.io) representa la infraestructura despl
 
 ### 1. Transferencia de Archivos y Conectividad (SCP/SSH)
 Se validó la capacidad de enviar datos desde un host local hacia la nube utilizando el protocolo **SCP** (Secure Copy).
-* **Evidencia:** [Ver captura de envío de archivos](images/fileSend)
+* **Evidencia:** [Ver captura de envío de archivos](images/fileSend.png)
 * **Comando utilizado:** `scp -i "DesafioTest.pem" tomatoestest.txt ec2-user@IP-PUBLICA:/home/ec2-user/`
 
 ### 2. Configuración de Almacenamiento Adicional (EBS)
 Se añadió un segundo volumen EBS de 1GB para persistencia de datos. 
 * **Insight Técnico:** Al utilizar una instancia basada en arquitectura Nitro (Amazon Linux 2023), el disco se identificó como `/dev/nvme1n1`.
 * **Proceso:** Se formateó con el sistema de archivos **XFS** y se montó satisfactoriamente.
-* **Evidencia:** [Ver captura de montaje de disco](images/Seconddisk)
+* **Evidencia:** [Ver captura de montaje de disco](images/Seconddisk.png)
 
 ### 3. Conexión a Base de Datos (RDS)
 Se probó la comunicación entre la instancia EC2 y el servicio gestionado RDS utilizando el cliente de MariaDB.
 * **Resultado:** Conexión exitosa al endpoint de la base de datos, validando que los *Security Groups* permiten el tráfico en el puerto 3306.
-* **Evidencia:** [Ver captura de conexión RDS](images/rds)
+* **Evidencia:** [Ver captura de conexión RDS](images/rds.png)
 
 ---
 
